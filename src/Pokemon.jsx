@@ -1,17 +1,40 @@
 import { useState, useEffect } from 'react'
 
-function Pokemon({ name }) {
-    useEffect(() => {
-        fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
-        .then((response) => response.json())
-        .then((data) => {
-            console.log(data);})
-    }, [name]);
+function Pokemon({ url }) {
+    const [pokemonData, setPokemonData] = useState(null)
+    useEffect(()=>{
+        async function fetchData() {
+            try {
+                const response = await fetch(url)
+                const data = await response.json()
+                setPokemonData(data);
+                console.log(data);
+            } catch (error) {
+                console.error("Något gick fel när data om vald pokemon skulle ladda:", error);
+            }
+        }
+        fetchData();
+    }, [url]);
+
+    if (!pokemonData) return <p>Laddar...</p>
 
 
     return (
     <div>
-        
+        <h2>{pokemonData.name}</h2>
+        <img 
+            src={pokemonData.sprites.front_default} 
+            alt={pokemonData.name} 
+        />
+      <ul>
+        {pokemonData.types.map((t, index) => (
+          <li key={index}>{t.type.name}</li>
+        ))}
+      </ul>
+
+      {/* Vikt & längd */}
+      <p><strong>Vikt:</strong> {pokemonData.weight}</p>
+      <p><strong>Längd:</strong> {pokemonData.height}</p>
     </div>
     )
 }

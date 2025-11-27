@@ -2,15 +2,18 @@ import { useState, useEffect } from 'react'
 import Pokemon from './Pokemon.jsx'
 
 function PokemonApplication() {
-    const [pokemon, setPokemon] = useState([])
+    const [pokemonList, setPokemonList] = useState([])
     const [selectedPokemon, setSelectedPokemon] = useState("");
-    const [showPokemon, setShowPokemon] = useState("");
+    const [showPokemon, setShowPokemon] = useState(false);
     useEffect(() => {
         const getResults = async () => {
-            const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
-            const data = await response.json()
-
-            return setPokemon(data.results);
+            try {
+                const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
+                const data = await response.json()
+                setPokemonList(data.results);
+            } catch (error) {
+                console.error("Något gick fel i samband med fetch av Pokemon listan:", error);
+            }
         }   
         getResults();
     }, []);
@@ -24,20 +27,17 @@ function PokemonApplication() {
 
   return (
     <div>
-        <h1>Pokémon List</h1>
-      <select value={selectedPokemon} onChange={(e) => setSelectedPokemon(e.target.value)}>
+        <h2>Pokémon List</h2>
+      <select value={selectedPokemon} onChange={(e) => {
+        const value = e.target.value;
+        setSelectedPokemon(value);
+        setShowPokemon(value !== "");}}>
         <option value="">Välj en Pokémon</option>
-        {pokemon.map((p, index) => (
-          <option key={index}>{p.name}</option>
+        {pokemonList.map((p, index) => (
+          <option key={index} value={p.url}>{p.name}</option>
         ))}
       </select>
-      {selectedPokemon && 
-      <p>
-        Du valde: {selectedPokemon}
-        <button onClick={handleFetchInfo}>Hämta data om {selectedPokemon}</button>
-      </p>}
-        {showPokemon && <Pokemon name={selectedPokemon} />}
-        <button>Close pokemon app</button>
+        {showPokemon && <Pokemon url={selectedPokemon} />}
     </div> 
   )
 }
