@@ -20,7 +20,7 @@ function Pokemon({ url }) {
 
 
     return (
-    <div>
+    <div className='pokemonData-container'>
         <h2>{pokemonData.name}</h2>
         <img 
             src={pokemonData.sprites.front_default} 

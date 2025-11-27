@@ -11,12 +11,10 @@ function App() {
 
   return (
     <div>
-      <h1>Fetch a pokemon</h1>
-      {!isVisible && (
-        <button onClick={handleClick}>
-          Start Pokemon App
+      <h1>Utforska de första 151 Pokémon</h1>
+      <button onClick={handleClick}>
+          {isVisible ? "Avsluta" : "Börja utforska"}
         </button>
-      )}
       {isVisible && <PokemonApplication />}
     </div>
   )

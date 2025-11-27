@@ -27,7 +27,7 @@ function PokemonApplication() {
 
   return (
     <div>
-        <h2>Pokémon List</h2>
+        <h2>Väjl en Pokemon</h2>
       <select value={selectedPokemon} onChange={(e) => {
         const value = e.target.value;
         setSelectedPokemon(value);
