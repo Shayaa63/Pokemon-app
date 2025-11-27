@@ -1,16 +1,68 @@
-# React + Vite
+# Pokémon App 🎮
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+En enkel React‑applikation som använder [PokéAPI](https://pokeapi.co/) för att hämta information om Pokémon.  
+Du kan välja en Pokémon från en lista och se namn, bild, typ(er), vikt och längd.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Kom igång
 
-## React Compiler
+## 📋 Krav
+- Node.js 18+
+- npm eller yarn
+  
+### 1. Klona projektet
+```bash
+git clone https://github.com/ditt-användarnamn/pokemon-app.git
+cd pokemon-app
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 2. Installera beroenden
+```bash
+npm install
+```
 
-## Expanding the ESLint configuration
+### 3. Starta utvecklingsservern
+```bash
+npm run dev
+```
+eller (beroende på setup):
+```bash
+npm start
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Applikationen körs nu på **lokal** (om du använder Vite) eller **http://localhost:3000** (om du använder Create React App).
+
+---
+
+## 📂 Projektstruktur
+
+```
+src/
+├── App.jsx
+├── App.css
+├── PokemonApplication.jsx
+├── Pokemon.jsx
+└── index.js
+```
+
+- **App.jsx** – startkomponenten med knappen för att öppna/stänga appen  
+- **PokemonApplication.jsx** – hämtar listan med Pokémon och visar dropdown  
+- **Pokemon.jsx** – renderar vald Pokémon med bild, typ, vikt och längd  
+- **App.css** – grundläggande styling  
+
+---
+
+## 🛠️ Tekniker
+- React (Hooks: `useState`, `useEffect`)
+- PokéAPI (https://pokeapi.co/)
+- CSS för styling
+
+---
+
+## ✨ Funktioner
+- Starta/stäng appen med en knapp
+- Dropdown med de första 151 Pokémon
+- Hämta detaljer om vald Pokémon
+- Visa namn, bild, typ(er), vikt och längd
+```
