@@ -43,7 +43,7 @@ src/
 ├── App.css
 ├── PokemonApplication.jsx
 ├── Pokemon.jsx
-└── index.js
+└── index.html
 ```
 
 - **App.jsx** – startkomponenten med knappen för att öppna/stänga appen  
