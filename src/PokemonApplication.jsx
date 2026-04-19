@@ -109,9 +109,16 @@ function PokemonApplication() {
       {/* KARUSELL + KNAPP */}
       <div className="karusell-wrapper">
         <div className="karusell-sektion">
-          {loadingKarusell ? (
-            <p className="loading-text">Laddar Pokémon...</p>
-          ) : (
+{loadingKarusell ? (
+  <div className="loading-container">
+    <div className="pokeball">
+      <div className="pokeball-top"></div>
+      <div className="pokeball-middle"></div>
+      <div className="pokeball-bottom"></div>
+    </div>
+    <p className="loading-text">Hämtar Pokémon...</p>
+  </div>
+) : (
             <div className="scene">
               <div className="carousel-ring">
                 {karusell.map((p, index) => {
